@@ -5,230 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Weather Forecast</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <title>Weather Forecast</title>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+<body>
+    <div>
+        <div class="card">
+            <div class="search">
+                <input type="text" class="search-bar">
+                <button class="search-icon">Search</button>
 
-<body onload="initClock()">
-    <div id="main" align="center" >
-        <div id="location">
-            <input id="cityInput" type="text"  placeholder="Enter city,country">
-            <button  type="button" id="sendButton">Search</button>
-               <div id="datetime" align="right">
-      <div class="date">
-        <span id="dayname"style="color: black">Day</span>,
-        <span id="month"style="color: black">Month</span>
-        <span id="daynum"style="color: black">00</span>,
-        <span id="year"style="color: black">Year</span>
-      </div>
-      <div class="time">
-        <span id="hour"style="color: black">00</span>:
-        <span id="minutes"style="color: black">00</span>:
-        <span id="seconds"style="color: black">00</span>
-        <span id="period"style="color: black">AM</span>
-      </div>
-    </div>
-        </div>
-        </div>
-    </div>
-
-     
-   
-    <div class="container " align="center">
-        <div class="row justify-content-around">
-            <!-- Today-->
-            <div class="col-xl-4 col-12 py-3">
-
-                <div class="row ">
-            <div class="col-auto">
-                        <h4 id="day"></h4>
-                    </div>
-                    <div class="col-auto ml-auto">
-                        <h4 id="month"></h4>
-                    </div>
-           
-                </div>
-                <div class="row py-3">
-                    <div class="col-auto">
-                        <h2 id="city"></h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-auto">
-                        <h2 class="display-3 font-weight-bold text-white"><span id="temperature"></span><sup>o</sup>C
-                        </h2>
-                    </div>
-                    <div class="col-auto my-auto">
-                        <img class="img-fluid" src="" id="weatherImage" alt="" width=90>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-auto"><h2>Humidity
-                        <img class="px-1" src="assets/images/icon-umberella.png" alt=""><span
-                            id="humidity"></span><span>%</span></h2>
-                    </div>
-                    <div class="col-auto"><h2>wind
-                        <img class="px-1" src="assets/images/icon-wind.png" alt=""><span id="wind"></span><span>km/h</span></h2>
-                    </div>
-                    <div class="col-auto"><h2>Direction
-                        <img class="px-1" src="assets/images/icon-compass.png" alt=""><span class="text-capitalize"
-                            id="compass"></span></h2>
-                    </div>
-                </div>
             </div>
-            <!-- 2nd day -->
 
-            <div class="col-xl-8 col-12  py-3">
-                <div class="row no-gutters">
-                    <div class="col">
-                        <div class="row">
-                            <div class="col text-center">
-                                <h2 id="day2"></h2>
-                            </div>
-                        </div>
-                        <div class="row py-3">
-                            <div class="col text-center">
-                                <img src="" id="day2WeatherImage" alt="" width=48 height=48>
-                            </div>
-                        </div>
-                        <div class="row py-3">
-                            <div class="col text-center">
-                                <h2 class="display-5 font-weight-bold text-white"><span
-                                        id="day2MaxTemp"></span><sup>o</sup>C
-                                </h2>
-                                <h2 class="display-6 text-white"><span id="day2MinTemp"></span><sup>o</sup>C
-                                </h2>
+            <div class="weather">
+                <h2 class="city"> Weather in Bengaluru </h2>
+                <span class="temp">51°</span><span class="temp">&#8451;</span><br>
+                <img src="" alt="" class="icon" />
+                <div class="description">Description</div>
+                <div class="humidity">Humidity : 60%</div>
+                <div class="wind">Windy :6.2 km/h</div>
 
-                            </div>
-                        </div>
-               
-                    </div>
 
-                    <!-- 3rd day -->
-                    <div class="col">
-                        <div class="row">
-                            <div class="col text-center">
-                                <h2 id="day3"></h2>
-                            </div>
-                        </div>
-                        <div class="row py-3">
-                            <div class="col text-center">
-                                <img src="" id="day3WeatherImage" alt="" width=48 height=48>
-                            </div>
-                        </div>
-                        <div class="row py-3">
-                            <div class="col text-center">
-                                <h2 class="display-5 font-weight-bold text-white"><span
-                                        id="day3MaxTemp"></span><sup>o</sup>C
-                                </h2>
-                                <h2 class="display-6 text-white"><span id="day3MinTemp"></span><sup>o</sup>C
-                                </h2>
-                            </div>
-                        </div>
-                       
-                    </div>
-                    <!-- 4th day -->
-                    <div class="col">
-                        <div class="row">
-                            <div class="col text-center">
-                                <h2 id="day4"></h2>
-                            </div>
-                        </div>
-                        <div class="row py-3">
-                            <div class="col text-center">
-                                <img src="" id="day4WeatherImage" alt="" width=48 height=48>
-                            </div>
-                        </div>
-                        <div class="row py-3">
-                            <div class="col text-center">
-                                <h2 class="display-5 font-weight-bold text-white"><span
-                                        id="day4MaxTemp"></span><sup>o</sup>C
-                                </h2>
-                                <h2 class="display-6 text-white"><span id="day4MinTemp"></span><sup>o</sup>C
-                                </h2>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <!-- 5th day -->
-                    <div class="col">
-                        <div class="row">
-                            <div class="col text-center">
-                                <h2 id="day5"></h2>
-                            </div>
-                        </div>
-                        <div class="row py-3">
-                            <div class="col text-center">
-                                <img src="" id="day5WeatherImage" alt="" width=48 height=48>
-                            </div>
-                        </div>
-                        <div class="row py-3">
-                            <div class="col text-center">
-                                <h2 class="display-5 font-weight-bold text-white"><span
-                                        id="day5MaxTemp"></span><sup>o</sup>C
-                                </h2>
-                                <h2 class="display-6 text-white"><span id="day5MinTemp"></span><sup>o</sup>C
-                                </h2>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <!-- 6th day -->
-                    <div class="col">
-                        <div class="row">
-                            <div class="col text-center">
-                                <h2 id="day6"></h2>
-                            </div>
-                        </div>
-                        <div class="row py-3">
-                            <div class="col text-center">
-                                <img src="" id="day6WeatherImage" alt="" width=48 height=48>
-                            </div>
-                        </div>
-                        <div class="row py-3">
-                            <div class="col text-center">
-                                <h2 class="display-5 font-weight-bold text-white"><span
-                                        id="day6MaxTemp"></span><sup>o</sup>C
-                                </h2>
-                                <h2 class="display-6 text-white"><span id="day6MinTemp"></span><sup>o</sup>C
-                                </h2>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <!-- 7th day -->
-                    <div class="col">
-                        <div class="row">
-                            <div class="col text-center">
-                                <h2 id="day7"></h2>
-                            </div>
-                        </div>
-                        <div class="row py-3">
-                            <div class="col text-center">
-                                <img src="" id="day7WeatherImage" alt="" width=48 height=48>
-                            </div>
-                        </div>
-                        <div class="row py-3">
-                            <div class="col text-center">
-                                <h2 class="display-5 font-weight-bold text-white"><span
-                                        id="day7MaxTemp"></span><sup>o</sup>C
-                                </h2>
-                                <h2 class="display-6 text-white"><span id="day7MinTemp"></span><sup>o</sup>C
-                                </h2>
-                            </div>
-                        </div>
-                       
-                    </div>
-                </div>
-                    </div>
-                </div>
             </div>
-        </div>
-    </div>
-    </script>
 
-<script src="assets/js/jquery-3.4.1.min.js"></script>
-    <script src="assets/js/weather.js"></script></body>
+        </div>
+        
+
+</body>
+    <script src="assets/js/weather.js"></script>
+</body>
 
 </html>
